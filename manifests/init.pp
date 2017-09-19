@@ -5,10 +5,15 @@ class hiera_wrapper{
   $pkcs_public_key  = 'pkcs7_public_key: /etc/puppetlabs/puppet/keys/public_key.pkcs7.pem'
   $config_yaml = "---\n${pkcs_private_key}\n${pkcs_public_key}"
 
+  package{ 'rubygems':
+    ensure => installed,
+  }
+
   package { 'cli-hiera-eyaml':
     ensure   => present,
     name     => 'hiera-eyaml',
     provider => gem,
+    require  => Package[ 'rubygems' ],
   }
 
   file{ '/etc/eyaml':
