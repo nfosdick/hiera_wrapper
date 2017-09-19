@@ -37,7 +37,6 @@ class hiera_wrapper{
     puppet_conf_manage => false,
     datadir_manage     => false,
     eyaml              => true,
-    eyaml_extension    => 'yaml',
     provider           => 'puppetserver_gem',
     master_service     => 'puppetserver',
     hierarchy          => [
